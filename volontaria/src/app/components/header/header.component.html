@@ -3,20 +3,29 @@
     <a routerLink="" routerLinkActive="active" class="top-nav__item top-nav__item--brand">
       #Volontaria
     </a>
-    <a routerLink="/activities" routerLinkActive="active" class="top-nav__item">
+    <a routerLink="/activities" routerLinkActive="active" class="top-nav__item" *ngIf="isConnected()">
       #Inscription
     </a>
-    <a routerLink="/schedule" routerLinkActive="active" class="top-nav__item">
+    <a routerLink="/schedule" routerLinkActive="active" class="top-nav__item" *ngIf="isConnected()">
       #Mon horaire
     </a>
     <a routerLink="/info" routerLinkActive="active" class="top-nav__item">
       #Info
     </a>
+    <a routerLink="/admin/activities" routerLinkActive="active" class="top-nav__item" *ngIf="isAdmin() && isConnected()">
+      #Admin Activities
+    </a>
+    <a routerLink="/admin/volunteers" routerLinkActive="active" class="top-nav__item" *ngIf="isAdmin() && isConnected()">
+      #Admin Volunteers
+    </a>
   </div>
   <div class="top-nav__right">
-    <a href="#" class="top-nav__item">
+    <a href="#" class="top-nav__item" *ngIf="isConnected()">
       #Log out
       <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </a>
+    <a href="/login" class="top-nav__item" *ngIf="!isConnected()">
+      #Log In
     </a>
   </div>
 </ul>

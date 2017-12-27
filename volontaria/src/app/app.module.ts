@@ -20,6 +20,8 @@ import { AdminVolunteersComponent } from './components/pages/admin-volunteers/ad
 import { ActivityConfirmationComponent } from './components/pages/activities-page/activity-confirmation-page/activity-confirmation-page.component';
 import { ManageAccountPageComponent } from './components/pages/manage-account-page/manage-account-page.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { AuthenticateService } from './services/authenticate.service';
+import { FormsModule } from '@angular/forms';
 
 const appRoutes = [
   { path: 'index', component: HomePageComponent },
@@ -59,13 +61,14 @@ const appRoutes = [
     BrowserModule,
     RouterModule,
     HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }
     )
   ],
   exports: [ RouterModule ],
-  providers: [UserService],
+  providers: [UserService, AuthenticateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
